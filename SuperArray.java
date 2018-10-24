@@ -61,5 +61,11 @@ public class SuperArray{
   }
   */
 
+  public void remove(int index){
+    for (int idx = index; idx < this.size() - 1; idx ++){
+      data[idx] = data[idx + 1];
+    }
+    data[this.size() - 1] = null;
+  }
 
 }

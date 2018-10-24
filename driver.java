@@ -8,6 +8,9 @@ public class driver{
     a.set(0, "office US");
     System.out.println(a.get(0));
     System.out.println(a);
+    a.add("breakingBad");
+    System.out.println(a);
+    a.remove(1);
     System.out.println(a.toStringDebug());
 
     //System.out.println(a);
