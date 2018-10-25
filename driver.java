@@ -15,6 +15,7 @@ public class driver{
     System.out.println(a);
     System.out.println(a.contains("godfather"));
     System.out.println(a.contains("watermelon"));
+    a.add(2, "groundhog day");
     System.out.println(a.toStringDebug());
 
 

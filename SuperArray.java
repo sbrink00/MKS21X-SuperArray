@@ -81,4 +81,15 @@ public class SuperArray{
     return false;
   }
 
+  public String add(int index, String element){
+    if (index > -1 && index < data.length){
+      if (data.length == size()) this.resize();
+      for (int idx = size(); idx > index; idx -= 1){
+        data[idx] = data[idx - 1];
+      }
+      data[index] = element;
+      return "success!";
+    }
+    else return "if the index is out of range, that is when: (index < 0 || index >= size())";
+  }
 }
