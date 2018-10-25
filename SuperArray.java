@@ -3,7 +3,7 @@ public class SuperArray{
   private int size;
 
   public SuperArray(){
-    data = new String[5];
+    data = new String[10];
   }
   public void clear(){
     size = 0;
@@ -20,12 +20,12 @@ public class SuperArray{
   public boolean add(String element){
     if (size() == data.length) this.resize();
     data[size] = element;
-    String output = data[size];
     size += 1;
     return true;
   }
 
   public String toString(){
+    if (size == 0) return "[]";
     String output = "[";
     for (int idx = 0; idx < this.size(); idx ++){
       output += data[idx] + ", ";
@@ -66,12 +66,24 @@ public class SuperArray{
   }
 
 
-  public void remove(int index){
-    for (int idx = index; idx < this.size() - 1; idx ++){
-      data[idx] = data[idx + 1];
+  public String remove(int index){
+    if (index > -1 && index < size){
+      String output = data[index];
+      for (int idx = index; idx < this.size() - 1; idx ++){
+        data[idx] = data[idx + 1];
+      }
+      data[this.size() - 1] = null;
+      size -= 1;
+      return output;
     }
-    data[this.size() - 1] = null;
-    size -= 1;
+    else return "index out of range";
+  }
+
+  public boolean remove(String target){
+    for (int idx = 0; idx < size; idx ++){
+      if (data[idx].equals(target)) this.remove(idx);
+    }
+    return true;
   }
 
   public boolean contains(String target){
@@ -81,15 +93,29 @@ public class SuperArray{
     return false;
   }
 
-  public String add(int index, String element){
+  public void add(int index, String element){
     if (index > -1 && index < data.length){
       if (data.length == size()) this.resize();
       for (int idx = size(); idx > index; idx -= 1){
         data[idx] = data[idx - 1];
       }
       data[index] = element;
-      return "success!";
+      size ++;
     }
-    else return "if the index is out of range, that is when: (index < 0 || index >= size())";
+    else System.out.println("index out of range");
+  }
+
+  public int indexOf(String target){
+    for (int idx = 0; idx < size(); idx ++){
+      if (data[idx].equals(target)) return idx;
+    }
+    return -1;
+  }
+
+  public int lastIndexOf(String target){
+    for (int idx = size() - 1; idx >= 0; idx --){
+      if (data[idx].equals(target)) return idx;
+    }
+    return -1;
   }
 }
