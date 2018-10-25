@@ -3,7 +3,7 @@ public class SuperArray{
   private int size;
 
   public SuperArray(){
-    data = new String[10];
+    data = new String[5];
   }
   public void clear(){
     size = 0;
@@ -18,6 +18,7 @@ public class SuperArray{
   }
 
   public boolean add(String element){
+    if (size() == data.length) this.resize();
     data[size] = element;
     String output = data[size];
     size += 1;
@@ -34,7 +35,7 @@ public class SuperArray{
 
   public String toStringDebug(){
     String output = "[";
-    for (int idx = 0; idx < 10; idx ++){
+    for (int idx = 0; idx < data.length; idx ++){
       output += data[idx] + ", ";
     }
     return output.substring(0, output.length() - 2) + "]";
@@ -56,16 +57,28 @@ public class SuperArray{
     return output;
   }
 
-  /*private void resize(){
-    SuperArray output = new SuperArray[data.length + 1];
+  private void resize(){
+    String[] output = new String[size * 2 + 1];
+    for (int idx = 0; idx < size; idx ++){
+      output[idx] = this.get(idx);
+    }
+    data = output;
   }
-  */
+
 
   public void remove(int index){
     for (int idx = index; idx < this.size() - 1; idx ++){
       data[idx] = data[idx + 1];
     }
     data[this.size() - 1] = null;
+    size -= 1;
+  }
+
+  public boolean contains(String target){
+    for (int idx =0; idx < size(); idx ++){
+      if (this.get(idx).equals(target)) return true;
+    }
+    return false;
   }
 
 }

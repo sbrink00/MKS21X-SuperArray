@@ -1,18 +1,22 @@
 public class driver{
   public static void main(String[] args){
     SuperArray a = new SuperArray();
-    System.out.println(a.add("office UK"));
-    System.out.println(a.add("parks&rec"));
+    a.add("parks&rec");
+    a.add("office UK");
+    a.add("breakingBad");
+    a.add("ozark");
+    a.add("scarface");
+    System.out.println(a);
     System.out.println(a.size());
     System.out.println(a.get(0));
-    a.set(0, "office US");
-    System.out.println(a.get(0));
+    System.out.println(a.set(1, "office US"));
     System.out.println(a);
-    a.add("breakingBad");
+    a.add("godfather");
     System.out.println(a);
-    a.remove(1);
+    System.out.println(a.contains("godfather"));
+    System.out.println(a.contains("watermelon"));
     System.out.println(a.toStringDebug());
 
-    //System.out.println(a);
+
   }
 }
