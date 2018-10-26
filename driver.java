@@ -1,6 +1,7 @@
 public class driver{
   public static void main(String[] args){
     SuperArray a = new SuperArray();
+    System.out.println(a.size());
     a.add("parks&rec");
     a.add("office UK");
     a.add("breakingBad");
@@ -25,6 +26,8 @@ public class driver{
     System.out.println(a.remove(400));
     a.remove("parks&rec");
     a.remove("urmom");
+    System.out.println(a.toStringDebug());
+    a.clear();
     System.out.println(a.toStringDebug());
 
 

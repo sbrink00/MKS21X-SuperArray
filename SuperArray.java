@@ -5,7 +5,13 @@ public class SuperArray{
   public SuperArray(){
     data = new String[10];
   }
+
+  public SuperArray(int len){
+    data = new String[len];
+  }
+
   public void clear(){
+    data = new String[data.length];
     size = 0;
   }
 
@@ -24,23 +30,6 @@ public class SuperArray{
     return true;
   }
 
-  public String toString(){
-    if (size == 0) return "[]";
-    String output = "[";
-    for (int idx = 0; idx < this.size(); idx ++){
-      output += data[idx] + ", ";
-    }
-    return output.substring(0, output.length() - 2) + "]";
-  }
-
-  public String toStringDebug(){
-    String output = "[";
-    for (int idx = 0; idx < data.length; idx ++){
-      output += data[idx] + ", ";
-    }
-    return output.substring(0, output.length() - 2) + "]";
-  }
-
   public String get(int index){
     if (index > -1 && index < this.size()){
       return data[index];
@@ -57,33 +46,21 @@ public class SuperArray{
     return output;
   }
 
-  private void resize(){
-    String[] output = new String[size * 2 + 1];
-    for (int idx = 0; idx < size; idx ++){
-      output[idx] = this.get(idx);
+  public String toString(){
+    if (size == 0) return "[]";
+    String output = "[";
+    for (int idx = 0; idx < this.size(); idx ++){
+      output += data[idx] + ", ";
     }
-    data = output;
+    return output.substring(0, output.length() - 2) + "]";
   }
 
-
-  public String remove(int index){
-    if (index > -1 && index < size){
-      String output = data[index];
-      for (int idx = index; idx < this.size() - 1; idx ++){
-        data[idx] = data[idx + 1];
-      }
-      data[this.size() - 1] = null;
-      size -= 1;
-      return output;
+  public String toStringDebug(){
+    String output = "[";
+    for (int idx = 0; idx < data.length; idx ++){
+      output += data[idx] + ", ";
     }
-    else return "index out of range";
-  }
-
-  public boolean remove(String target){
-    for (int idx = 0; idx < size; idx ++){
-      if (data[idx].equals(target)) this.remove(idx);
-    }
-    return true;
+    return output.substring(0, output.length() - 2) + "]";
   }
 
   public boolean contains(String target){
@@ -118,4 +95,46 @@ public class SuperArray{
     }
     return -1;
   }
+
+  public String remove(int index){
+    if (index > -1 && index < size){
+      String output = data[index];
+      for (int idx = index; idx < this.size() - 1; idx ++){
+        data[idx] = data[idx + 1];
+      }
+      data[this.size() - 1] = null;
+      size -= 1;
+      return output;
+    }
+    else return "index out of range";
+  }
+
+  private void resize(){
+    String[] output = new String[size * 2 + 1];
+    for (int idx = 0; idx < size; idx ++){
+      output[idx] = this.get(idx);
+    }
+    data = output;
+  }
+
+  public boolean remove(String element){
+    for (int idx = 0; idx < size; idx ++){
+      if (data[idx].equals(element)) this.remove(idx);
+    }
+    return true;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
