@@ -34,7 +34,10 @@ public class SuperArray{
     if (index > -1 && index < this.size()){
       return data[index];
     }
-    else return "if the index is out of range, that is when: (index < 0 || index >= size())";
+    else {
+      System.out.println("if the index is out of range, that is when: (index < 0 || index >= size())");
+      return null;
+    }
   }
 
   public String set(int index, String element){
@@ -42,7 +45,10 @@ public class SuperArray{
     if (index > -1 && index < this.size()){
       data[index] = element;
     }
-    else return "if the index is out of range, that is when: (index < 0 || index >= size())";
+    else{
+      System.out.println("if the index is out of range, that is when: (index < 0 || index >= size())");
+      return null;
+    }
     return output;
   }
 
@@ -79,7 +85,7 @@ public class SuperArray{
       data[index] = element;
       size ++;
     }
-    else System.out.println("index out of range");
+    else System.out.println("if the index is out of range, that is when: (index < 0 || index >= size())");
   }
 
   public int indexOf(String target){
@@ -99,14 +105,16 @@ public class SuperArray{
   public String remove(int index){
     if (index > -1 && index < size){
       String output = data[index];
-      for (int idx = index; idx < this.size() - 1; idx ++){
+      for (int idx = index; idx < this.size(); idx ++){
         data[idx] = data[idx + 1];
       }
-      data[this.size() - 1] = null;
       size -= 1;
       return output;
     }
-    else return "index out of range";
+    else{
+      System.out.println("if the index is out of range, that is when: (index < 0 || index >= size())");
+      return null;
+    }
   }
 
   private void resize(){
@@ -116,12 +124,15 @@ public class SuperArray{
     }
     data = output;
   }
-
+  //[ab, cd, ef, gh, ij, kl, mn, op, qr, st]
   public boolean remove(String element){
     for (int idx = 0; idx < size; idx ++){
-      if (data[idx].equals(element)) this.remove(idx);
+      if (data[idx].equals(element)) {
+        this.remove(idx);
+        return true;
+      }
     }
-    return true;
+    return false;
   }
 
 
