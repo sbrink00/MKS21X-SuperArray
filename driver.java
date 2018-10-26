@@ -1,6 +1,9 @@
 public class driver{
   public static void main(String[] args){
     SuperArray a = new SuperArray();
+    System.out.println(a);
+    System.out.println(a.get(0));
+    System.out.println(a.toStringDebug());
     System.out.println(a.size());
     a.add("parks&rec");
     a.add("office UK");
