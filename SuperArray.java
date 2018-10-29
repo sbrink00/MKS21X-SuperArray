@@ -7,7 +7,8 @@ public class SuperArray{
   }
 
   public SuperArray(int len){
-    data = new String[len];
+    if (len < 0) throw new IllegalArgumentException("len can't be negative");
+    else data = new String[len];
   }
 
   public void clear(){
@@ -31,25 +32,17 @@ public class SuperArray{
   }
 
   public String get(int index){
-    if (index > -1 && index < this.size()){
-      return data[index];
-    }
-    else {
-      System.out.println("if the index is out of range, that is when: (index < 0 || index >= size())");
-      return null;
-    }
+    if (index < 0 ||index >= this.size()) throw new IllegalArgumentException("index must be > -1 and < size");
+    else return data[index];
   }
 
   public String set(int index, String element){
-    String output = data[index];
-    if (index > -1 && index < this.size()){
+    if (index < 0 ||index >= this.size()) throw new IllegalArgumentException("index must be > -1 and < size");
+    else {
+      String output = data[index];
       data[index] = element;
+      return output;
     }
-    else{
-      System.out.println("if the index is out of range, that is when: (index < 0 || index >= size())");
-      return null;
-    }
-    return output;
   }
 
   public String toString(){
@@ -85,7 +78,7 @@ public class SuperArray{
       data[index] = element;
       size ++;
     }
-    else System.out.println("if the index is out of range, that is when: (index < 0 || index >= size())");
+    else throw new IllegalArgumentException("index must be > -1 and < size");
   }
 
   public int indexOf(String target){
@@ -111,9 +104,7 @@ public class SuperArray{
       size -= 1;
       return output;
     }
-    else{
-      System.out.println("if the index is out of range, that is when: (index < 0 || index >= size())");
-      return null;
+    else{ throw new IllegalArgumentException("index must be > -1 and < size");
     }
   }
 
