@@ -32,12 +32,12 @@ public class SuperArray{
   }
 
   public String get(int index){
-    if (index < 0 ||index >= this.size()) throw new IllegalArgumentException("index must be > -1 and < size");
+    if (index < 0 ||index >= this.size()) throw new IndexOutOfBoundsException("index must be > -1 and < size");
     else return data[index];
   }
 
   public String set(int index, String element){
-    if (index < 0 ||index >= this.size()) throw new IllegalArgumentException("index must be > -1 and < size");
+    if (index < 0 ||index >= this.size()) throw new IndexOutOfBoundsException("index must be > -1 and < size");
     else {
       String output = data[index];
       data[index] = element;
@@ -78,7 +78,7 @@ public class SuperArray{
       data[index] = element;
       size ++;
     }
-    else throw new IllegalArgumentException("index must be > -1 and < size");
+    else throw new IndexOutOfBoundsException("index must be > -1 and < size");
   }
 
   public int indexOf(String target){
@@ -104,7 +104,7 @@ public class SuperArray{
       size -= 1;
       return output;
     }
-    else{ throw new IllegalArgumentException("index must be > -1 and < size");
+    else{ throw new IndexOutOfBoundsException("index must be > -1 and < size");
     }
   }
 
