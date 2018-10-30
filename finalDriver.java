@@ -8,7 +8,7 @@ public class finalDriver{
       SuperArray a = new SuperArray(-5);
     }
     catch(IllegalArgumentException e){
-      System.out.println(e);
+      e.printStackTrace();
       System.out.println("fix length");
     }
     //System.out.println(b);
@@ -20,8 +20,8 @@ public class finalDriver{
     try{
       b.add(6, "1");
     }
-    catch(IndexOutOfBoundsException f){
-      System.out.println(f);
+    catch(IndexOutOfBoundsException e){
+      e.printStackTrace();
       System.out.println("fix index");
     }
 
@@ -29,7 +29,7 @@ public class finalDriver{
       b.remove(6);
     }
     catch(IndexOutOfBoundsException e){
-      System.out.println(e);
+      e.printStackTrace();
       System.out.println("fix index");
     }
 
@@ -38,7 +38,7 @@ public class finalDriver{
       b.set(6, "45");
     }
     catch(IndexOutOfBoundsException e){
-      System.out.println(e);
+      e.printStackTrace();
       System.out.println("fix index");
     }
 
@@ -46,7 +46,7 @@ public class finalDriver{
       b.get(8);
     }
     catch(IndexOutOfBoundsException e){
-      System.out.println(e);
+      e.printStackTrace();
       System.out.println("fix index");
     }
   }
